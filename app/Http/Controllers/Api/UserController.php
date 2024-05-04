@@ -23,13 +23,7 @@ class UserController extends Controller
         return User::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -39,26 +33,13 @@ class UserController extends Controller
         return User::findOrFail($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
     }
     public function authUser(UserLoginRequest $request)
     {
-
-
-
         $validateUser = $request->validated();
         $user = User::where('email',$validateUser['email'])->first();
         if(!$user){
@@ -77,10 +58,6 @@ class UserController extends Controller
 
          $token = $user->createToken('token')->plainTextToken;
         return response()->json(['token' => $token],200) ;
-
-
-
-
     }
 
     public function createUser(UserRegistrationRequest $request)
@@ -93,8 +70,6 @@ class UserController extends Controller
         $token = $user->createToken('token')->plainTextToken;
 
         return response()->json(['token' => $token],200);
-
-
     }
     public function logout(Request $request)
     {

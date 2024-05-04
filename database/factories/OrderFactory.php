@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,9 +20,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         $users = User::pluck('id')->toArray();
-        $products = Product::pluck('id')->toArray();
         return [
-           'products_id' => $this->faker->randomElement($products),
             'user_id' => $this->faker->randomElement($users),
         ];
     }
