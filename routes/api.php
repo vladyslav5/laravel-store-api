@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\CurrencyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     ]);
 });
 
+Route::get('/currency',[CurrencyController::class,'index']);
 
 Route::post('/reg',[UserController::class,'createUser']);
 Route::post('/auth',[UserController::class,'authUser']);
