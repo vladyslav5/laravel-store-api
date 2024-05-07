@@ -15,9 +15,9 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return OrderResource::collection(Order::all());
+        return OrderResource::collection(Order::where('user_id',$request->user()->id)->get());
     }
 
     /**
