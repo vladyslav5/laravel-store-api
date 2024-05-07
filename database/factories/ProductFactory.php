@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Currency;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,11 +19,13 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $category = Category::pluck('id')->toArray();
+        $currency = Currency::pluck('cc')->toArray();
         return [
             'name' => fake()->name(),
             'description' => fake()->text(),
             'price'=>fake()->numberBetween(100, 1000),
             'category_id'=> fake()->randomElement($category),
+            'currency'=>fake()->randomElement($currency),
         ];
     }
 }
